@@ -6,9 +6,9 @@ namespace ProblematicProgram
 {
 
 
-     class ProblematicProblem
+    class ProblematicProblem
     {
-       static Random rng = new Random();
+        static Random rng = new Random();
 
 
         static bool cont = true;
@@ -28,8 +28,9 @@ namespace ProblematicProgram
             {
                 cont = true;
             }
-            else 
-            { cont = false;
+            else
+            {
+                cont = false;
                 Environment.Exit(0);
             }
 
@@ -58,7 +59,7 @@ namespace ProblematicProgram
                 Console.Write("Would you like to add any activities before we generate one? yes/no: ");
                 string addToList = (Console.ReadLine());
 
-              
+
 
                 Console.WriteLine();
                 while (addToList == "yes")
@@ -73,7 +74,7 @@ namespace ProblematicProgram
                     }
                     Console.WriteLine();
                     Console.WriteLine("Would you like to add more? yes/no: ");
-                    string addMoreToList =(Console.ReadLine());
+                    string addMoreToList = (Console.ReadLine());
                     if (addMoreToList.ToLower() == "yes")
                     {
                         addToList = "yes";
@@ -105,34 +106,35 @@ namespace ProblematicProgram
                 }
                 Console.WriteLine();
 
-          
+
 
                 int randomNumber = rng.Next(activities.Count);
                 string randomActivity = activities[randomNumber];
+                
 
-
-                if (userAge > 21 && randomActivity == "Wine Tasting")
+                if (userAge < 21 && randomActivity == "Wine Tasting")
                 {
                     Console.WriteLine($"Oh no! Looks like you are too young to do {randomActivity}");
                     Console.WriteLine("Pick something else!");
                     activities.Remove(randomActivity);
                     randomNumber = rng.Next(activities.Count);
-                     randomActivity = activities[randomNumber];
+                    randomActivity = activities[randomNumber];
                 }
                 Console.Write($"Ah got it! {userName}, your random activity is: {randomActivity}! Is this ok or do you want to grab another activity? Keep/Redo: ");
-                        Console.WriteLine();
+                Console.WriteLine();
                 string userImput2 = Console.ReadLine();
 
                 if (userImput2.ToLower() == "redo")
                 {
                     cont = true;
-                } else
+                }
+                else
                 {
 
                     cont = false;
                 }
-                
-                
+
+
             }
         }
     }
